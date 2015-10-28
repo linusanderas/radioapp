@@ -1,5 +1,7 @@
 document.addEventListener("deviceready", function() {
-   angular.bootstrap(document, ['app']);
+
+
+
 }, false);
 
 
@@ -16,18 +18,8 @@ document.addEventListener("deviceready", function() {
 
     $rootScope.stream_hi = true;
 
-    $rootScope.media = new Media($rootScope.low_stream, function(){}, function(){}, function(status){
-
-      if (status == 1) status = "Starting";
-      if (status == 2) status = "Playing";
-      if (status == 3) status = "Paused";
-      if (status == 4) status = "Stopped";
-
-      $rootScope.Playerstatus = status;
-
-    });
-
-
+    $rootScope.audio = new Audio($rootScope.low_stream);
+    
 
     $scope.openContact = function() {
 
@@ -43,13 +35,16 @@ document.addEventListener("deviceready", function() {
 
     $scope.play = function() {
 
-       $rootScope.media.play();
+       $rootScope.audio.play();
 
     };
 
     $scope.stop = function() {
 
-       $rootScope.media.stop();
+       $rootScope.audio.pause();
+       $rootScope.audio = null;
+       $rootScope.audio = new Audio($rootScope.low_stream);
+
 
     };
 

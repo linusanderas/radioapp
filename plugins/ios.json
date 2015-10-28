@@ -52,6 +52,9 @@
         }
     },
     "installed_plugins": {
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.linusanderas.radioapp"
+        },
         "cordova-plugin-media": {
             "PACKAGE_NAME": "com.linusanderas.radioapp"
         },
@@ -59,9 +62,5 @@
             "PACKAGE_NAME": "com.linusanderas.radioapp"
         }
     },
-    "dependent_plugins": {
-        "cordova-plugin-file": {
-            "PACKAGE_NAME": "com.linusanderas.radioapp"
-        }
-    }
+    "dependent_plugins": {}
 }
