@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "description": "",
-  "scripts": {
-  },
+  "scripts": {},
   "author": "",
   "license": "MIT",
   "devDependencies": {
@@ -22,5 +21,8 @@
     "gulp-task-listing": "^1.0.0",
     "jshint-stylish": "^1.0.1",
     "run-sequence": "^1.0.2"
+  },
+  "dependencies": {
+    "gulp-vfs": "~0.1.1"
   }
 }
