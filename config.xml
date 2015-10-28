@@ -12,4 +12,5 @@
     <access origin="*" />
     <plugin name="cordova-plugin-media" spec="~1.0.1" />
     <plugin name="cordova-plugin-transport-security" spec="~0.1.1" />
+    <plugin name="cordova-plugin-file" spec="~3.0.0" />
 </widget>

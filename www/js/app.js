@@ -16,7 +16,7 @@ document.addEventListener("deviceready", function() {
 
     $rootScope.stream_hi = true;
 
-    $rootScope.media = new Media($rootScope.hi_stream, function(){}, function(){}, function(status){
+    $rootScope.media = new Media($rootScope.low_stream, function(){}, function(){}, function(status){
 
       if (status == 1) status = "Starting";
       if (status == 2) status = "Playing";
