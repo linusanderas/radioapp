@@ -59,6 +59,9 @@
         },
         "cordova-plugin-media": {
             "PACKAGE_NAME": "com.linusanderas.radioapp"
+        },
+        "cordova-plugin-transport-security": {
+            "PACKAGE_NAME": "com.linusanderas.radioapp"
         }
     },
     "dependent_plugins": {}

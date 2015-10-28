@@ -38,11 +38,24 @@
                         }
                     ]
                 }
+            },
+            "*-Info.plist": {
+                "parents": {
+                    "NSAppTransportSecurity": [
+                        {
+                            "xml": "<dict><key>NSAllowsArbitraryLoads</key><true /></dict>",
+                            "count": 1
+                        }
+                    ]
+                }
             }
         }
     },
     "installed_plugins": {
         "cordova-plugin-media": {
+            "PACKAGE_NAME": "com.linusanderas.radioapp"
+        },
+        "cordova-plugin-transport-security": {
             "PACKAGE_NAME": "com.linusanderas.radioapp"
         }
     },

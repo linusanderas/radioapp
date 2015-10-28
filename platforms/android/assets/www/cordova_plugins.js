@@ -165,7 +165,8 @@ module.exports.metadata =
 // TOP OF METADATA
 {
     "cordova-plugin-file": "3.0.0",
-    "cordova-plugin-media": "1.0.1"
+    "cordova-plugin-media": "1.0.1",
+    "cordova-plugin-transport-security": "0.1.1"
 }
 // BOTTOM OF METADATA
 });

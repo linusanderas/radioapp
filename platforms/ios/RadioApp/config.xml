@@ -14,15 +14,6 @@
     <feature name="LocalStorage">
         <param name="ios-package" value="CDVLocalStorage" />
     </feature>
-    <name>RadioApp</name>
-    <description>
-        An app for a radiostation
-    </description>
-    <author email="linus@webresult.se" href="http://webresult.se">
-        Webresult Developer team
-    </author>
-    <content src="index.html" />
-    <access origin="*" />
     <preference name="AndroidPersistentFileLocation" value="Internal" />
     <feature name="File">
         <param name="ios-package" value="CDVFile" />
@@ -31,4 +22,14 @@
     <feature name="Media">
         <param name="ios-package" value="CDVSound" />
     </feature>
+    <name>RadioApp</name>
+    <description>
+        An app for a radiostation
+    </description>
+    <author email="linus@webresult.se" href="http://webresult.se">
+        Webresult Developer team
+    </author>
+    <preference name="AndroidPersistentFileLocation" value="Compatibility" />
+    <content src="index.html" />
+    <access origin="*" />
 </widget>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- CSP support mode (required for Windows Universal apps): https://docs.angularjs.org/api/ng/directive/ngCsp -->
-<html lang="en" ng-app="app" ng-csp>
+<html lang="en" ng-csp>
 <head>
     <meta charset="utf-8" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -68,14 +68,24 @@
     <ons-navigator var="navi">
         <ons-page ng-controller="MasterController">
             <ons-toolbar>
-                <div class="center">RadioApp</div>
+                <div class="center">Radio App</div>
             </ons-toolbar>
-        <ons-row ng-click="Play()">
-            Play
-        </ons-row>
-        <ons-row ng-click="openContact()">
-            Contact
-        </ons-row>
+        <ons-button modifier="large--cta" ng-click="play()" style="margin-bottom:5px;">
+            Play 
+        </ons-button>
+
+        <ons-button modifier="large--cta" ng-click="stop()" style="margin-bottom:5px;">
+            Stop 
+        </ons-button>
+
+        <ons-button modifier="large--cta" ng-click="openContact()">
+            Contacts
+        </ons-button>
+
+        <div style="margin-top:20px;">
+            {{Playerstatus}}
+        </div>
+
             
         </ons-page>
     </ons-navigator>
