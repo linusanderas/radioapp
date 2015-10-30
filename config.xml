@@ -12,4 +12,8 @@
     <access origin="*" />
     <plugin name="cordova-plugin-transport-security" spec="~0.1.1" />
     <plugin name="cordova-plugin-file" spec="~3.0.0" />
+    <plugin name="com.lampa.startapp" spec="~0.0.5" />
+    <plugin name="cordova-plugin-x-toast" spec="~2.2.1" />
+    <plugin name="cordova-plugin-media" spec="~1.0.1" />
+    <plugin name="cordova-plugin-device" spec="~1.0.1" />
 </widget>

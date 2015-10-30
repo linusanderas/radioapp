@@ -93,13 +93,16 @@ gulp.task('browser-sync', function() {
     startPath: 'index.html'
   });
 
-  gulp.watch([
+
+ gulp.watch([
     __dirname + '/www/**/*.{js,html,css,svg,png,gif,jpg,jpeg}'
   ], {
     debounceDelay: 400
   }, function() {
     browserSync.reload();
   });
+
+
 });
 
 ////////////////////

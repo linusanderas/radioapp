@@ -15,15 +15,17 @@ document.addEventListener("deviceready", function() {
 
     $rootScope.hi_stream = "http://serv02.streamsfortheworld.com:8000/radiosama_hi";
     $rootScope.low_stream = "http://serv02.streamsfortheworld.com:8000/radiosama_low";
+    $rootScope.skype_name = "viktorsilfver";
+
+
+
 
     $rootScope.active_stream = 2;
     $rootScope.active_stream_url = $rootScope.low_stream;
     $rootScope.isPlaying = false;
 
-    $rootScope.audio = new Audio($rootScope.active_stream_url);
 
-    $rootScope.classHigh = "disabled";
-    $rootScope.classLow = "enabled";
+
     
 
     $scope.openContact = function() {
@@ -34,13 +36,64 @@ document.addEventListener("deviceready", function() {
 
     $scope.openSkype = function() {
 
-      alert("open skype");
+    var scheme;
 
-    };
+    if (device.platform === 'iOS') {
+        scheme = 'skype://';
+    } else if (device.platform === 'Android') {
+        scheme = 'com.skype.raider';
+    } 
+
+    navigator.startApp.check(scheme, function(message) { /* success */
+        navigator.startApp.start([["action", "VIEW"], ["skype:" + $rootScope.skype_name + "?chat"]], function(message) {
+        }, function(error) { // error 
+            ons.notification.alert({
+              message: 'Skype could not be started!'
+            });
+        });
+    }, function(error) {
+            ons.notification.alert({
+              message: 'Skype is not installed!'
+            });
+    });
+  };
+
+
+$scope.openFacebook = function() {
+
+    var scheme;
+
+    if (device.platform === 'iOS') {
+        scheme = 'fb://';
+    } else if (device.platform === 'Android') {
+        scheme = 'com.facebook.katana';
+    } 
+
+    navigator.startApp.check(scheme, function(message) { /* success */
+        navigator.startApp.start([["action", "VIEW"], ["fb://profile/248584335233490"]], function(message) {
+        }, function(error) { // error 
+            ons.notification.alert({
+              message: 'Facebookapp could not be started!'
+            });
+        });
+    }, function(error) {
+            ons.notification.alert({
+              message: 'Facebookapp is not installed!'
+            });
+    });
+  };
+
 
     $scope.play = function() {
 
       $rootScope.isPlaying = true;
+      if (device.platform == "Android")
+      {
+        $rootScope.audio = new Media($rootScope.active_stream_url, function(){});
+      } else {
+        $rootScope.audio = new Audio($rootScope.active_stream_url);
+      }
+
       $rootScope.audio.play();
 
     };
@@ -49,8 +102,16 @@ document.addEventListener("deviceready", function() {
 
       $rootScope.isPlaying = false;
        $rootScope.audio.pause();
-       $rootScope.audio = null;
-       $rootScope.audio = new Audio($rootScope.active_stream_url);
+
+      
+      if (device.platform == "Android")
+      {
+        $rootScope.audio.release();
+        $rootScope.audio = new Media($rootScope.active_stream_url, function(){});
+      } else {
+        $rootScope.audio = null;
+        $rootScope.audio = new Audio($rootScope.active_stream_url);
+      }
 
 
     };
@@ -88,8 +149,9 @@ document.addEventListener("deviceready", function() {
       }
     };
 
-  });
+ 
 
+ });
 
   module.controller('MasterController', function($scope) {
    

@@ -3,6 +3,8 @@
 <html lang="en" ng-csp ng-app="app">
 <head>
     <meta charset="utf-8" />
+    
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"/>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
 
@@ -19,10 +21,9 @@
     <link rel="stylesheet" href="lib/angular/angular-csp.css" />
 
 
-    <!-- --------------- App init --------------- -->
     <script src="js/app.js"></script>
 
-    <title>Onsen UI Master-Details</title>
+    <title>Master</title>
 
     <style>
         .item {
@@ -88,7 +89,7 @@
         </ons-button>
 
         <ons-button modifier="large--cta" ng-click="openContact()">
-            Contacts
+            Contact us
         </ons-button>
 
 <ons-bottom-toolbar>
@@ -112,7 +113,7 @@
 
             <ons-toolbar>
                 <div class="left"><ons-back-button>Back</ons-back-button></div>
-                <div class="center">Contact</div>
+                <div class="center">Contact us</div>
             </ons-toolbar>
 
             <ons-list modifier="inset" style="margin-top: 10px">
@@ -124,21 +125,21 @@
                         <ons-col>
                             <header>
                                 <span class="item-title">Skype</span>
-                                <span class="item-label">linusanderas</span>
+                                <span class="item-label">{{skype_name}}</span>
                             </header>
                         </ons-col>
                     </ons-row>
                 </ons-list-item>
                 
                 <ons-list-item class="item">
-                    <ons-row>
+                    <ons-row ng-click="openFacebook()">
                         <ons-col width="60px">
                             <div class="item-thum"></div>
                         </ons-col>
                         <ons-col>
                             <header>
-                                <span class="item-title">Wiber</span>
-                                <span class="item-label">linusanderas</span>
+                                <span class="item-title">Facebook</span>
+                                <span class="item-label">Radio Sama</span>
                             </header>
                         </ons-col>
                     </ons-row>         
