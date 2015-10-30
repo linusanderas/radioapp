@@ -55,6 +55,15 @@
             color: #999;
             float: right;
         }
+
+        .trueClass {
+            background-color: #FF0000;
+            color:#000000;
+        }
+        .falseClass {
+            background-color: #000000;
+            color:#FFFFFF;
+        }
     </style>
 
 </head>
@@ -70,11 +79,11 @@
             <ons-toolbar>
                 <div class="center">Radio App</div>
             </ons-toolbar>
-        <ons-button modifier="large--cta" ng-click="play()" style="margin-bottom:5px;">
+        <ons-button modifier="large--cta" ng-click="play()" style="margin-bottom:5px;" ng-hide="isPlaying">
             Play 
         </ons-button>
 
-        <ons-button modifier="large--cta" ng-click="stop()" style="margin-bottom:5px;">
+        <ons-button modifier="large--cta" ng-click="stop()" style="margin-bottom:5px;" ng-show="isPlaying">
             Stop 
         </ons-button>
 
@@ -82,10 +91,18 @@
             Contacts
         </ons-button>
 
-        <div style="margin-top:20px;">
-            {{Playerstatus}}
-        </div>
+<ons-bottom-toolbar>
+  <div class="button-bar" style="width:100%;">
+  <div class="button-bar__item">
+    <button class="button-bar__button" ng-click="switchStream(1)" ng-class="active_stream == 1 ? 'trueClass' : 'falseClass'">High</button>
+  </div>
 
+  <div class="button-bar__item">
+    <button class="button-bar__button" ng-click="switchStream(2)" ng-class="active_stream == 2 ? 'trueClass' : 'falseClass'">Low</button>
+  </div>
+
+</div>
+</ons-bottom-toolbar>
             
         </ons-page>
     </ons-navigator>

@@ -16,9 +16,14 @@ document.addEventListener("deviceready", function() {
     $rootScope.hi_stream = "http://serv02.streamsfortheworld.com:8000/radiosama_hi";
     $rootScope.low_stream = "http://serv02.streamsfortheworld.com:8000/radiosama_low";
 
-    $rootScope.stream_hi = true;
+    $rootScope.active_stream = 2;
+    $rootScope.active_stream_url = $rootScope.low_stream;
+    $rootScope.isPlaying = false;
 
-    $rootScope.audio = new Audio($rootScope.low_stream);
+    $rootScope.audio = new Audio($rootScope.active_stream_url);
+
+    $rootScope.classHigh = "disabled";
+    $rootScope.classLow = "enabled";
     
 
     $scope.openContact = function() {
@@ -35,19 +40,53 @@ document.addEventListener("deviceready", function() {
 
     $scope.play = function() {
 
-       $rootScope.audio.play();
+      $rootScope.isPlaying = true;
+      $rootScope.audio.play();
 
     };
 
     $scope.stop = function() {
 
+      $rootScope.isPlaying = false;
        $rootScope.audio.pause();
        $rootScope.audio = null;
-       $rootScope.audio = new Audio($rootScope.low_stream);
+       $rootScope.audio = new Audio($rootScope.active_stream_url);
 
 
     };
 
+    $scope.switchStream = function(stream) {
+
+      if (stream != $rootScope.active_stream)
+      {
+
+        $rootScope.active_stream = stream;
+
+        if (stream == 1)
+        {
+            $rootScope.active_stream_url = $rootScope.hi_stream;
+            $rootScope.classHigh = "enabled";
+            $rootScope.classLow = "disabled";
+        }
+        else
+        {
+            $rootScope.active_stream_url = $rootScope.low_stream;
+            $rootScope.classHigh = "disbaled";
+            $rootScope.classLow = "enabled";
+        }
+
+          
+          if ($rootScope.isPlaying)
+          {
+
+         $rootScope.audio.pause();
+         $rootScope.audio = null;
+         $rootScope.audio = new Audio($rootScope.active_stream_url);
+         $rootScope.audio.play();
+       }
+
+      }
+    };
 
   });
 
