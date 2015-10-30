@@ -84,6 +84,56 @@ $scope.openFacebook = function() {
   };
 
 
+$scope.openViber = function() {
+
+    var scheme;
+
+    if (device.platform === 'iOS') {
+        scheme = 'viber://';
+    } else if (device.platform === 'Android') {
+        scheme = 'com.viber.voip';
+    } 
+
+    navigator.startApp.check(scheme, function(message) { /* success */
+        navigator.startApp.start([["action", "VIEW"], ["viber://calls"]], function(message) {
+        }, function(error) { // error 
+            ons.notification.alert({
+              message: 'Viber could not be started!'
+            });
+        });
+    }, function(error) {
+            ons.notification.alert({
+              message: 'Viber is not installed!'
+            });
+    });
+  };
+
+
+$scope.openWhatsApp = function() {
+
+    var scheme;
+
+    if (device.platform === 'iOS') {
+        scheme = 'whatsapp://';
+    } else if (device.platform === 'Android') {
+   //     scheme = 'com.whatsapp';
+    } 
+
+    navigator.startApp.check(scheme, function(message) { /* success */
+        navigator.startApp.start([["action", "VIEW"], ["whatsapp://"]], function(message) {
+        }, function(error) { // error 
+            ons.notification.alert({
+              message: 'WhatsApp could not be started!'
+            });
+        });
+    }, function(error) {
+            ons.notification.alert({
+              message: 'WhatsApp is not installed!'
+            });
+    });
+  };
+
+
     $scope.play = function() {
 
       $rootScope.isPlaying = true;

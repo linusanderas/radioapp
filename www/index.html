@@ -31,12 +31,30 @@
             line-height: 1;
         }
 
-        .item-thum {
-            background-color: #ccc;
+        .item-thum_fb,
+        .item-thum_sk,
+        .item-thum_vi,
+        .item-thum_wa
+         {
+            background-size: cover!important;
             width: 50px;
             height: 50px;
             border-radius: 4px;
         }
+
+        .item-thum_fb {
+            background: url("img/facebook.webp");
+        }
+        .item-thum_sk {
+            background: url("img/skype.webp");
+        }
+        .item-thum_vi {
+            background: url("img/viber.webp");
+        }
+          .item-thum_wa {
+            background: url("img/whatsapp.webp");
+        }              
+
 
         .item-title {
             font-size: 15px;
@@ -120,7 +138,7 @@
                 <ons-list-item class="item">
                     <ons-row ng-click="openSkype()" >
                         <ons-col width="60px">
-                            <div class="item-thum"></div>
+                            <div class="item-thum_sk"></div>
                         </ons-col>
                         <ons-col>
                             <header>
@@ -134,17 +152,45 @@
                 <ons-list-item class="item">
                     <ons-row ng-click="openFacebook()">
                         <ons-col width="60px">
-                            <div class="item-thum"></div>
+                            <div class="item-thum_fb"></div>
                         </ons-col>
                         <ons-col>
                             <header>
                                 <span class="item-title">Facebook</span>
-                                <span class="item-label">Radio Sama</span>
+                                <span class="item-label">RadioSama</span>
                             </header>
                         </ons-col>
                     </ons-row>         
                 </ons-list-item>
 
+ <ons-list-item class="item">
+                    <ons-row ng-click="openViber()">
+                        <ons-col width="60px">
+                            <div class="item-thum_vi"></div>
+                        </ons-col>
+                        <ons-col>
+                            <header>
+                                <span class="item-title">Viber</span>
+                                <span class="item-label">+357 99 55 33 02</span>
+                            </header>
+                        </ons-col>
+                    </ons-row>         
+                </ons-list-item>
+
+
+ <ons-list-item class="item">
+                    <ons-row ng-click="openWhatsApp()">
+                        <ons-col width="60px">
+                            <div class="item-thum_wa"></div>
+                        </ons-col>
+                        <ons-col>
+                            <header>
+                                <span class="item-title">WhatsApp</span>
+                                <span class="item-label">+357 99 55 33 02</span>
+                            </header>
+                        </ons-col>
+                    </ons-row>         
+                </ons-list-item>
                 
             </ons-list>
 
