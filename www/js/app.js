@@ -1,5 +1,10 @@
 document.addEventListener("deviceready", function() {
 
+      if (device.platform == "Android")
+      {
+        $rootScope.audio = new Media($rootScope.active_stream_url, function(){});
+        window.audioplayer.configure( function(){}, function(){});
+      }
 
 
 }, false);
@@ -69,7 +74,7 @@ $scope.openFacebook = function() {
         scheme = 'com.facebook.katana';
     } 
 
-    navigator.startApp.check(scheme, function(message) { /* success */
+    navigator.startApp.check(scheme, function(message) { /* success  */
         navigator.startApp.start([["action", "VIEW"], ["fb://profile/248584335233490"]], function(message) {
         }, function(error) { // error 
             ons.notification.alert({
@@ -116,11 +121,11 @@ $scope.openWhatsApp = function() {
     if (device.platform === 'iOS') {
         scheme = 'whatsapp://';
     } else if (device.platform === 'Android') {
-   //     scheme = 'com.whatsapp';
+        scheme = 'com.whatsapp';
     } 
 
     navigator.startApp.check(scheme, function(message) { /* success */
-        navigator.startApp.start([["action", "VIEW"], ["whatsapp://"]], function(message) {
+        navigator.startApp.start([["action", "VIEW"], ["whatsapp://send?text=Hi"]], function(message) {
         }, function(error) { // error 
             ons.notification.alert({
               message: 'WhatsApp could not be started!'
@@ -133,18 +138,108 @@ $scope.openWhatsApp = function() {
     });
   };
 
+$scope.openWebsite= function() {
+
+   cordova.InAppBrowser.open('http://www.radiosama.net', '_blank', 'location=yes');
+
+  };
+
+$scope.openPhone = function(number) {
+
+
+ons.notification.confirm({
+      message: 'Are you sure you want to call ' + number + '?',
+      callback: function(idx) {
+        switch (idx) {
+          case 0:
+            
+            break;
+          case 1:
+
+            window.plugins.CallNumber.callNumber(function(){}, function(){
+
+            ons.notification.alert({
+              message: 'Could not make the call'
+            });
+
+
+            }, number, false);
+
+
+            break;
+        }
+      }
+      });
+
+
+
+   
+  };
+
+$scope.openEmail = function(email) {
+
+  cordova.plugins.email.open({
+      to:      email,
+      subject: 'Hi',
+      body:    'Hello...'
+  });
+
+   
+  };
+
+
+
+  $scope.copy_text = function(text){
+
+    cordova.plugins.clipboard.copy(text);
+
+    window.plugins.toast.showLongBottom(text + ' has been copied to clipboard');
+
+  }
+
 
     $scope.play = function() {
 
       $rootScope.isPlaying = true;
+
+    window.plugins.toast.showLongCenter('Buffering the streaming. Please wait.');
+
+
+window.audioplayer.playstream( successCallback,
+                               failureCallback,
+                               // stream urls to play on android/ios
+                               {
+                                 android: $rootScope.active_stream_url,
+                                 ios: $rootScope.active_stream_url
+                               },
+                               // metadata used for iOS lock screen, Android 'Now Playing' notification
+                               {
+                                 "title": "Radio Sama Line",
+                                 "artist": "Radio Sama",
+                                 "image": {
+                                   "url": "https://media2.wnyc.org/i/300/300/l/80/1/governor_andrew_cuomo.jpg"
+                                 },
+                                 "imageThumbnail": {
+                                   "url": "https://media2.wnyc.org/i/60/60/l/80/1/governor_andrew_cuomo.jpg"
+                                 },
+                                 "name": "Radio Sama Station",
+                                 "description": "Description"
+                               },
+                               // javascript-specific json represenation of audio to be played, which will be passed back to 
+                               // javascript via successCallback when a stream is launched from a local notification (eg, the
+                               // alarm clock
+                               extra
+                             );
+
       if (device.platform == "Android")
       {
-        $rootScope.audio = new Media($rootScope.active_stream_url, function(){});
+        if (!$rootScope.audio)
+          $rootScope.audio = new Media($rootScope.active_stream_url, function(){});
       } else {
         $rootScope.audio = new Audio($rootScope.active_stream_url);
       }
 
-      $rootScope.audio.play();
+     // $rootScope.audio.play();
 
     };
 

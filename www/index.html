@@ -34,7 +34,10 @@
         .item-thum_fb,
         .item-thum_sk,
         .item-thum_vi,
-        .item-thum_wa
+        .item-thum_wa,
+        .item-thum_www,
+        .item-thum_ph,
+        .item-thum_em
          {
             background-size: cover!important;
             width: 50px;
@@ -54,7 +57,15 @@
           .item-thum_wa {
             background: url("img/whatsapp.webp");
         }              
-
+          .item-thum_www {
+            background: url("img/www.webp");
+        }   
+          .item-thum_ph {
+            background: url("img/call.webp");
+        }   
+          .item-thum_em {
+            background: url("img/mail.webp");
+        }   
 
         .item-title {
             font-size: 15px;
@@ -164,14 +175,14 @@
                 </ons-list-item>
 
  <ons-list-item class="item">
-                    <ons-row ng-click="openViber()">
-                        <ons-col width="60px">
+                    <ons-row>
+                        <ons-col width="60px" ng-click="openViber()">
                             <div class="item-thum_vi"></div>
                         </ons-col>
                         <ons-col>
                             <header>
-                                <span class="item-title">Viber</span>
-                                <span class="item-label">+357 99 55 33 02</span>
+                                <span class="item-title" ng-click="openViber()">Viber</span>
+                                <span class="item-label" ng-click="copy_text('+357 99 55 33 02')" >+357 99 55 33 02</span>
                             </header>
                         </ons-col>
                     </ons-row>         
@@ -179,19 +190,66 @@
 
 
  <ons-list-item class="item">
-                    <ons-row ng-click="openWhatsApp()">
-                        <ons-col width="60px">
+                    <ons-row >
+                        <ons-col width="60px" ng-click="openWhatsApp()">
                             <div class="item-thum_wa"></div>
                         </ons-col>
                         <ons-col>
                             <header>
-                                <span class="item-title">WhatsApp</span>
-                                <span class="item-label">+357 99 55 33 02</span>
+                                <span class="item-title" ng-click="openWhatsApp()">WhatsApp</span>
+                                <span class="item-label" ng-click="copy_text('+357 99 55 33 02')" >+357 99 55 33 02</span>
                             </header>
                         </ons-col>
                     </ons-row>         
                 </ons-list-item>
                 
+
+             <ons-list-item class="item" ng-click="openWebsite()">
+                    <ons-row >
+                        <ons-col width="60px">
+                            <div class="item-thum_www"></div>
+                        </ons-col>
+                        <ons-col>
+                            <header>
+                                <span class="item-title">Website</span>
+                                <span class="item-label">www.radiosama.net</span>
+                            </header>
+                        </ons-col>
+                    </ons-row>         
+                </ons-list-item>
+
+
+             <ons-list-item class="item" ng-click="openEmail('info@radiosama.net')">
+                    <ons-row >
+                        <ons-col width="60px">
+                            <div class="item-thum_em"></div>
+                        </ons-col>
+                        <ons-col>
+                            <header>
+                                <span class="item-title">Email</span>
+                                <span class="item-label">info@radiosama.net</span>
+                            </header>
+                        </ons-col>
+                    </ons-row>         
+                </ons-list-item>
+
+             <ons-list-item class="item" ng-click="openPhone('+357 99 55 33 02')">
+                    <ons-row >
+                        <ons-col width="60px">
+                            <div class="item-thum_ph"></div>
+                        </ons-col>
+                        <ons-col>
+                            <header>
+                                <span class="item-title">Call</span>
+                                <span class="item-label">+357 99 55 33 02</span>
+                            </header>
+                        </ons-col>
+                    </ons-row>         
+                </ons-list-item>
+
+
+
+
             </ons-list>
 
             <br>
