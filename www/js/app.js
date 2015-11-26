@@ -1,13 +1,4 @@
-document.addEventListener("deviceready", function() {
 
-      if (device.platform == "Android")
-      {
-        $rootScope.audio = new Media($rootScope.active_stream_url, function(){});
-        window.audioplayer.configure( function(){}, function(){});
-      }
-
-
-}, false);
 
 
 (function(){
@@ -20,7 +11,34 @@ document.addEventListener("deviceready", function() {
 
     $rootScope.hi_stream = "http://serv02.streamsfortheworld.com:8000/radiosama_hi";
     $rootScope.low_stream = "http://serv02.streamsfortheworld.com:8000/radiosama_low";
+    
+    $rootScope.show_skype = true;
     $rootScope.skype_name = "viktorsilfver";
+
+
+    $rootScope.show_facebook= true;
+    $rootScope.facebook_name = "RadioSama";
+    $rootScope.facebook_profile = "248584335233490";
+
+
+    $rootScope.show_viber = true;
+    $rootScope.viber_number = "+357 99 55 33 02";
+
+
+    $rootScope.show_whatsapp = true;
+    $rootScope.whatsapp_number = "+357 99 55 33 02";
+
+
+    $rootScope.show_website = true;
+    $rootScope.website = "www.radiosama.net";
+    $rootScope.website_url = "http://www.radiosama.net";
+
+    $rootScope.show_email = false;
+    $rootScope.email = "info@radiosama.net";
+
+    $rootScope.show_phone = true;
+    $rootScope.phone_number = "+357 99 55 33 02";
+
 
 
 
@@ -30,6 +48,16 @@ document.addEventListener("deviceready", function() {
     $rootScope.isPlaying = false;
 
 
+
+document.addEventListener("deviceready", function() {
+
+      if (device.platform == "Android")
+      {
+       $rootScope.audio = new Media($rootScope.active_stream_url, function(){});
+      }
+
+
+}, false);
 
     
 
@@ -75,7 +103,7 @@ $scope.openFacebook = function() {
     } 
 
     navigator.startApp.check(scheme, function(message) { /* success  */
-        navigator.startApp.start([["action", "VIEW"], ["fb://profile/248584335233490"]], function(message) {
+        navigator.startApp.start([["action", "VIEW"], ["fb://profile/" + $rootScope.facebook_profile]], function(message) {
         }, function(error) { // error 
             ons.notification.alert({
               message: 'Facebookapp could not be started!'
@@ -140,7 +168,7 @@ $scope.openWhatsApp = function() {
 
 $scope.openWebsite= function() {
 
-   cordova.InAppBrowser.open('http://www.radiosama.net', '_blank', 'location=yes');
+   cordova.InAppBrowser.open( $rootScope.website_url, '_blank', 'location=yes');
 
   };
 
@@ -202,34 +230,8 @@ $scope.openEmail = function(email) {
 
       $rootScope.isPlaying = true;
 
-    window.plugins.toast.showLongCenter('Buffering the streaming. Please wait.');
+    window.plugins.toast.showLongCenter('Buffering the streaming. Please wait. It can take a long time until it starts...');
 
-
-window.audioplayer.playstream( successCallback,
-                               failureCallback,
-                               // stream urls to play on android/ios
-                               {
-                                 android: $rootScope.active_stream_url,
-                                 ios: $rootScope.active_stream_url
-                               },
-                               // metadata used for iOS lock screen, Android 'Now Playing' notification
-                               {
-                                 "title": "Radio Sama Line",
-                                 "artist": "Radio Sama",
-                                 "image": {
-                                   "url": "https://media2.wnyc.org/i/300/300/l/80/1/governor_andrew_cuomo.jpg"
-                                 },
-                                 "imageThumbnail": {
-                                   "url": "https://media2.wnyc.org/i/60/60/l/80/1/governor_andrew_cuomo.jpg"
-                                 },
-                                 "name": "Radio Sama Station",
-                                 "description": "Description"
-                               },
-                               // javascript-specific json represenation of audio to be played, which will be passed back to 
-                               // javascript via successCallback when a stream is launched from a local notification (eg, the
-                               // alarm clock
-                               extra
-                             );
 
       if (device.platform == "Android")
       {
@@ -239,7 +241,7 @@ window.audioplayer.playstream( successCallback,
         $rootScope.audio = new Audio($rootScope.active_stream_url);
       }
 
-     // $rootScope.audio.play();
+      $rootScope.audio.play();
 
     };
 

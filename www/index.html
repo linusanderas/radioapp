@@ -146,7 +146,7 @@
             </ons-toolbar>
 
             <ons-list modifier="inset" style="margin-top: 10px">
-                <ons-list-item class="item">
+                <ons-list-item class="item" ng-show="show_skype">
                     <ons-row ng-click="openSkype()" >
                         <ons-col width="60px">
                             <div class="item-thum_sk"></div>
@@ -160,7 +160,7 @@
                     </ons-row>
                 </ons-list-item>
                 
-                <ons-list-item class="item">
+                <ons-list-item class="item" ng-show="show_facebook">
                     <ons-row ng-click="openFacebook()">
                         <ons-col width="60px">
                             <div class="item-thum_fb"></div>
@@ -168,13 +168,13 @@
                         <ons-col>
                             <header>
                                 <span class="item-title">Facebook</span>
-                                <span class="item-label">RadioSama</span>
+                                <span class="item-label">{{facebook_name}}</span>
                             </header>
                         </ons-col>
                     </ons-row>         
                 </ons-list-item>
 
- <ons-list-item class="item">
+ <ons-list-item class="item" ng-show="show_viber">
                     <ons-row>
                         <ons-col width="60px" ng-click="openViber()">
                             <div class="item-thum_vi"></div>
@@ -182,14 +182,14 @@
                         <ons-col>
                             <header>
                                 <span class="item-title" ng-click="openViber()">Viber</span>
-                                <span class="item-label" ng-click="copy_text('+357 99 55 33 02')" >+357 99 55 33 02</span>
+                                <span class="item-label" ng-click="copy_text(viber_number)" >{{viber_number}}</span>
                             </header>
                         </ons-col>
                     </ons-row>         
                 </ons-list-item>
 
 
- <ons-list-item class="item">
+ <ons-list-item class="item" ng-show="show_whatsapp">
                     <ons-row >
                         <ons-col width="60px" ng-click="openWhatsApp()">
                             <div class="item-thum_wa"></div>
@@ -197,14 +197,14 @@
                         <ons-col>
                             <header>
                                 <span class="item-title" ng-click="openWhatsApp()">WhatsApp</span>
-                                <span class="item-label" ng-click="copy_text('+357 99 55 33 02')" >+357 99 55 33 02</span>
+                                <span class="item-label" ng-click="copy_text(whatsapp_number)" >{{whatsapp_number}}</span>
                             </header>
                         </ons-col>
                     </ons-row>         
                 </ons-list-item>
                 
 
-             <ons-list-item class="item" ng-click="openWebsite()">
+             <ons-list-item class="item" ng-click="openWebsite()" ng-show="show_website">
                     <ons-row >
                         <ons-col width="60px">
                             <div class="item-thum_www"></div>
@@ -212,14 +212,14 @@
                         <ons-col>
                             <header>
                                 <span class="item-title">Website</span>
-                                <span class="item-label">www.radiosama.net</span>
+                                <span class="item-label">{{website}}</span>
                             </header>
                         </ons-col>
                     </ons-row>         
                 </ons-list-item>
 
 
-             <ons-list-item class="item" ng-click="openEmail('info@radiosama.net')">
+             <ons-list-item class="item" ng-click="openEmail('email')" ng-show="show_email">
                     <ons-row >
                         <ons-col width="60px">
                             <div class="item-thum_em"></div>
@@ -227,13 +227,13 @@
                         <ons-col>
                             <header>
                                 <span class="item-title">Email</span>
-                                <span class="item-label">info@radiosama.net</span>
+                                <span class="item-label">{{email}}</span>
                             </header>
                         </ons-col>
                     </ons-row>         
                 </ons-list-item>
 
-             <ons-list-item class="item" ng-click="openPhone('+357 99 55 33 02')">
+             <ons-list-item class="item" ng-click="openPhone(phone_number)" ng-show="show_phone">
                     <ons-row >
                         <ons-col width="60px">
                             <div class="item-thum_ph"></div>
@@ -241,7 +241,7 @@
                         <ons-col>
                             <header>
                                 <span class="item-title">Call</span>
-                                <span class="item-label">+357 99 55 33 02</span>
+                                <span class="item-label">{{phone_number}}</span>
                             </header>
                         </ons-col>
                     </ons-row>         
