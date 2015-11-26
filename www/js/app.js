@@ -198,14 +198,8 @@ $scope.openWebsite= function() {
 $scope.openPhone = function(number) {
 
 
-ons.notification.confirm({
-      message: 'Are you sure you want to call ' + number + '?',
-      callback: function(idx) {
-        switch (idx) {
-          case 0:
-            
-            break;
-          case 1:
+
+$scope.OpenDialog("Do you want to call " + number + "?", function(){
 
             window.plugins.CallNumber.callNumber(function(){}, function(){
 
@@ -215,11 +209,6 @@ ons.notification.confirm({
 
 
             }, number, false);
-
-
-            break;
-        }
-      }
       });
 
   };
