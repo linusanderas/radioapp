@@ -69,6 +69,10 @@ document.addEventListener("deviceready", function() {
 
     $scope.openSkype = function() {
 
+
+$scope.OpenDialog("Do you want to open Skype?", function(){
+
+
     var scheme;
 
     if (device.platform === 'iOS') {
@@ -89,10 +93,15 @@ document.addEventListener("deviceready", function() {
               message: 'Skype is not installed!'
             });
     });
+  
+    });
   };
 
 
 $scope.openFacebook = function() {
+
+
+$scope.OpenDialog("Do you want to open Facebook?", function(){
 
     var scheme;
 
@@ -114,10 +123,16 @@ $scope.openFacebook = function() {
               message: 'Facebookapp is not installed!'
             });
     });
+
+
+  });
+
   };
 
-
 $scope.openViber = function() {
+
+
+$scope.OpenDialog("Do you want to open Viber?", function(){
 
     var scheme;
 
@@ -139,10 +154,15 @@ $scope.openViber = function() {
               message: 'Viber is not installed!'
             });
     });
+
+  });
   };
 
 
 $scope.openWhatsApp = function() {
+
+$scope.OpenDialog("Do you want to open the WhatsApp?", function(){
+
 
     var scheme;
 
@@ -164,6 +184,9 @@ $scope.openWhatsApp = function() {
               message: 'WhatsApp is not installed!'
             });
     });
+
+    });
+
   };
 
 $scope.openWebsite= function() {
@@ -199,10 +222,31 @@ ons.notification.confirm({
       }
       });
 
-
-
-   
   };
+
+
+ $scope.OpenDialog = function(msg, func_callback)
+ {
+
+
+      ons.notification.confirm({
+            message: msg,
+            callback: function(idx) {
+              switch (idx) {
+                case 0:
+                  
+                  break;
+                case 1:
+
+                  func_callback();
+
+                  break;
+              }
+            }
+            });
+
+
+ };
 
 $scope.openEmail = function(email) {
 
@@ -253,7 +297,7 @@ $scope.openEmail = function(email) {
       
       if (device.platform == "Android")
       {
-        $rootScope.audio.release();
+  //      $rootScope.audio.release();
         $rootScope.audio = new Media($rootScope.active_stream_url, function(){});
       } else {
         $rootScope.audio = null;
