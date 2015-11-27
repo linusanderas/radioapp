@@ -33,7 +33,7 @@
     $rootScope.website = "www.radiosama.net";
     $rootScope.website_url = "http://www.radiosama.net";
 
-    $rootScope.show_email = false;
+    $rootScope.show_email = true;
     $rootScope.email = "info@radiosama.net";
 
     $rootScope.show_phone = true;
@@ -281,12 +281,13 @@ $scope.openEmail = function(email) {
     $scope.stop = function() {
 
       $rootScope.isPlaying = false;
-       $rootScope.audio.pause();
 
       
       if (device.platform == "Android")
       {
-  //      $rootScope.audio.release();
+        $rootScope.audio.pause();
+        $rootScope.audio.stop();
+        $rootScope.audio = null;
         $rootScope.audio = new Media($rootScope.active_stream_url, function(){});
       } else {
         $rootScope.audio = null;
